@@ -5,4 +5,3 @@ Jinja2==2.10
 numpy==1.14.1
 tensorflow==1.5.0
 Werkzeug==0.14.1
-xacro==1.12.0
