@@ -1,0 +1,8 @@
+tomato spider mite damage
+tomato bacterial spot
+tomato early blight
+tomato healthy
+tomato late blight
+tomato leaf mold
+tomato target spot
+tomato yellow leaf curl virus
