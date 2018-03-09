@@ -103,26 +103,27 @@ def classify():
 
     return jsonify(labels,results.tolist())
 
+
+# TensorFlow configuration/initialization
+model_file = "retrained_graph.pb"
+label_file = "retrained_labels.txt"
+input_height = 224
+input_width = 224
+input_mean = 128
+input_std = 128
+input_layer = "input"
+output_layer = "final_result"
+
+# Load TensorFlow Graph from disk
+graph = load_graph(model_file)
+
+# Grab the Input/Output operations
+input_name = "import/" + input_layer
+output_name = "import/" + output_layer
+input_operation = graph.get_operation_by_name(input_name);
+output_operation = graph.get_operation_by_name(output_name);
+
 if __name__ == '__main__':
-    # TensorFlow configuration/initialization
-    model_file = "retrained_graph.pb"
-    label_file = "retrained_labels.txt"
-    input_height = 224
-    input_width = 224
-    input_mean = 128
-    input_std = 128
-    input_layer = "input"
-    output_layer = "final_result"
-
-    # Load TensorFlow Graph from disk
-    graph = load_graph(model_file)
-
-    # Grab the Input/Output operations
-    input_name = "import/" + input_layer
-    output_name = "import/" + output_layer
-    input_operation = graph.get_operation_by_name(input_name);
-    output_operation = graph.get_operation_by_name(output_name);
-
     # Initialize the Flask Service
     # Obviously, disable Debug in actual Production
     app.run(debug=True, port=8000)
